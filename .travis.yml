@@ -16,7 +16,7 @@ after_sucess:
     # log in to the docker CLI
     - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
     #take those images and push them to docker hub
-    - docker push rpaiva77/muti-client
-    - docker push rpaiva77/muti-nginx
-    - docker push rpaiva77/muti-server
-    - docker push rpaiva77/muti-worker
+    - docker push rpaiva77/multi-client
+    - docker push rpaiva77/multi-nginx
+    - docker push rpaiva77/multi-server
+    - docker push rpaiva77/multi-worker
