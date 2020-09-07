@@ -10,9 +10,9 @@ script:
 
 after_sucess:
     - docker build -t rpaiva77/multi-client ./client
-    - docker build -t rpaiva77/muiti-nginx ./nginx
+    - docker build -t rpaiva77/multi-nginx ./nginx
     - docker build -t rpaiva77/multi-server ./server
-    - docker build -t rpaiva77/muiti-worker ./worker
+    - docker build -t rpaiva77/multi-worker ./worker
     # log in to the docker CLI
     - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
     #take those images and push them to docker hub
