@@ -1,0 +1,22 @@
+language: generic
+sudo: 
+    - docker
+
+before_install:
+    - docker build -t rpaiva77/react-test -f ./client/Dockerfile.dev ./client
+
+script:
+    - docker run -e CI=true rpaiva77/react-test npm test
+
+after_sucess:
+    - docker build -t rpaiva77/multi-client ./client
+    - docker build -t rpaiva77/muiti-nginx ./nginx
+    - docker build -t rpaiva77/multi-server ./server
+    - docker build -t rpaiva77/muiti-worker ./worker
+    # log in to the docker CLI
+    - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
+    #take those images and push them to docker hub
+    - docker push rpaiva77/muti-client
+    - docker push rpaiva77/muti-nginx
+    - docker push rpaiva77/muti-server
+    - docker push rpaiva77/muti-worker
